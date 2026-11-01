@@ -1,13 +1,23 @@
 package com;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Article {
 
+    @SerializedName("name")
     private String nombre;
+    @SerializedName("quantity")
     private int cantidad;
+    @SerializedName("unitPrice")
     private double precio;
+    @SerializedName("discount")
     private double descuento;
 
     private final Calculator calculator = new Calculator();
+
+    // Constructor vacío
+    public Article() {
+    }
 
     public Article(String nombre, int cantidad, double precio, double descuento) {
         this.nombre = nombre;

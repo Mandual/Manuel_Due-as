@@ -1,14 +1,22 @@
 package com;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
 
     private String id;
+    @SerializedName("articles")
     private List<Article> articulos;
 
     private final Calculator calculator = new Calculator();
+
+    // Constructor vacío
+    public Order() {
+        this.articulos = new ArrayList<>();
+    }
 
     public Order(String id, List<Article> articulos) {
         this.id = id;
