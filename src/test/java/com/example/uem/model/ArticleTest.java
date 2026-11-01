@@ -1,4 +1,4 @@
-package com;
+package com.example.uem.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ArticleTest {
-
-
     @Test
     @DisplayName("getBruto: cantidad * precio para un caso normal")
     void testGetBruto_normal() {
@@ -38,7 +36,6 @@ public class ArticleTest {
 
         assertEquals(0.0, resultado, 0.0001);
     }
-
 
     @Test
     @DisplayName("getDescuento: aplica correctamente el descuento al importe bruto")

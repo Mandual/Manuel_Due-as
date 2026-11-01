@@ -1,5 +1,8 @@
-package com;
+package com.example.uem;
 
+import com.example.uem.controller.OrderController;
+import com.example.uem.model.Order;
+import com.example.uem.view.OrderView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.slf4j.Logger;
@@ -14,10 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-    // para leer el fichero json
     public static List<Order> loadOrders(String resource) throws IOException {
         InputStream is = Main.class.getResourceAsStream(resource);
         if (is == null) {
@@ -43,6 +44,9 @@ public class Main {
                 log.debug("Loaded order: {}", order.getId());
             }
             log.debug("Total orders loaded: {}", orders.size());
+
+            OrderView view = new OrderView();
+            new OrderController(view, orders);
         } catch (IOException e) {
             log.error("Error leyendo order.json", e);
         }

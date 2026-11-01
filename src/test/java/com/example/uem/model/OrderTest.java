@@ -1,4 +1,4 @@
-package com;
+package com.example.uem.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -10,8 +10,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrderTest {
-
-
     @Test
     @DisplayName("getBruto: suma el importe bruto de todos los artículos")
     void testGetBruto_normal() {
@@ -34,7 +32,6 @@ public class OrderTest {
 
         assertEquals(0.0, resultado, 0.0001);
     }
-
 
     @Test
     @DisplayName("getDescuento: suma el importe con descuento de todos los artículos")

@@ -1,9 +1,8 @@
-package com;
+package com.example.uem.model;
 
 import com.google.gson.annotations.SerializedName;
 
 public class Article {
-
     @SerializedName("name")
     private String nombre;
     @SerializedName("quantity")
@@ -15,7 +14,7 @@ public class Article {
 
     private final Calculator calculator = new Calculator();
 
-    // Constructor vacío
+    // Constructor vacío necesario para que Gson cree el objeto
     public Article() {
     }
 
@@ -49,7 +48,6 @@ public class Article {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-
 
     public void setDescuento(double descuento) {
         this.descuento = descuento;

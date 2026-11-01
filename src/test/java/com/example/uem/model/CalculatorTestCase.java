@@ -1,4 +1,4 @@
-package com;
+package com.example.uem.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -11,9 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CalculatorTestCase {
-
     private final Calculator calculator = new Calculator();
-
 
     @Test
     @DisplayName("multiply: multiplicación normal")
@@ -47,7 +45,6 @@ public class CalculatorTestCase {
         assertEquals(31.5, resultado, 0.0001);
     }
 
-
     @Test
     @DisplayName("concat: concatenación de dos cadenas normales")
     void testConcat_normal() {
@@ -66,7 +63,6 @@ public class CalculatorTestCase {
         assertEquals("empty", resultado2);
     }
 
-
     @Test
     @DisplayName("sum: suma normal")
     void testSum_normal() {
@@ -82,7 +78,6 @@ public class CalculatorTestCase {
 
         assertEquals(-3.0, resultado, 0.0001);
     }
-
 
     @Test
     @DisplayName("discount: se aplica correctamente un descuento válido")
@@ -123,7 +118,6 @@ public class CalculatorTestCase {
             calculator.discount(100.0, 150.0);
         });
     }
-
 
     @Test
     @DisplayName("calculateTotal: una lista de importes devuelve la suma correcta")

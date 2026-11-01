@@ -1,5 +1,7 @@
-package com;
+package com.example.uem;
 
+import com.example.uem.model.Article;
+import com.example.uem.model.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -12,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MainTest {
-
     @Test
     @DisplayName("loadOrders: carga los pedidos de order.json con id y artículos")
     void testLoadOrders_ok() throws IOException {

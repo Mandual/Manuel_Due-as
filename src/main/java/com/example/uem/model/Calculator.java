@@ -1,4 +1,4 @@
-package com;
+package com.example.uem.model;
 
 import java.util.List;
 

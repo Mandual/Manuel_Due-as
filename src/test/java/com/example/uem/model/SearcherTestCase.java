@@ -1,4 +1,4 @@
-package com;
+package com.example.uem.model;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -13,9 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SearcherTestCase {
-
     private final Searcher searcher = new Searcher();
-
 
     @Test
     @DisplayName("searchWord: la palabra existe en la lista")
@@ -36,7 +34,6 @@ public class SearcherTestCase {
 
         assertFalse(resultado, "'gracias' no está en la lista");
     }
-
 
     @Test
     @DisplayName("getWordByIndex: un índice válido devuelve la palabra correcta")
@@ -68,7 +65,6 @@ public class SearcherTestCase {
         assertNull(palabra);
     }
 
-
     @Test
     @DisplayName("searchByPrefix: devuelve las palabras que empiezan con el prefijo")
     void testSearchByPrefix_matchesFound() {
@@ -93,7 +89,6 @@ public class SearcherTestCase {
         assertFalse(resultado.contains("gato"));
     }
 
-
     @Test
     @DisplayName("filterByKeyword: devuelve todos los elementos que contienen la palabra clave")
     void testFilterByKeyword_matchesFound() {
@@ -116,7 +111,6 @@ public class SearcherTestCase {
         assertTrue(resultado.isEmpty());
     }
 
-
     @Test
     @DisplayName("searchExactPhrase: encuentra la frase cuando es el primer elemento")
     void testSearchExactPhrase_firstElement() {
@@ -130,11 +124,7 @@ public class SearcherTestCase {
     @Test
     @DisplayName("searchExactPhrase: BUG original - la frase existe pero no es el primer elemento")
     void testSearchExactPhrase_notFirstElement() {
-        // Con la implementación original, el "else return false" dentro del bucle
-        // hacía que el método comparase solo el primer elemento de la lista:
-        // si no coincidía, devolvía false inmediatamente sin mirar el resto.
-        // Tras corregir Searcher.java (quitando el else y dejando que el bucle
-        // siga), este test pasa correctamente.
+        // Caso del bug original: la frase existe pero no es el primer elemento
         List<String> lista = Arrays.asList("adios", "hola mundo", "buenos dias");
 
         boolean resultado = searcher.searchExactPhrase("buenos dias", lista);
@@ -160,5 +150,33 @@ public class SearcherTestCase {
         boolean resultado = searcher.searchExactPhrase("cualquier cosa", lista);
 
         assertFalse(resultado);
+    }
+
+    @Test
+    @DisplayName("searchOrderById: devuelve el pedido cuando el id existe")
+    void testSearchOrderById_found() {
+        Order o1 = new Order("O001", new ArrayList<>());
+        Order o2 = new Order("O002", new ArrayList<>());
+        List<Order> pedidos = Arrays.asList(o1, o2);
+
+        Order resultado = searcher.searchOrderById("O002", pedidos);
+
+        assertEquals("O002", resultado.getId());
+    }
+
+    @Test
+    @DisplayName("searchOrderById: devuelve null cuando el id no existe")
+    void testSearchOrderById_notFound() {
+        Order o1 = new Order("O001", new ArrayList<>());
+        List<Order> pedidos = Arrays.asList(o1);
+
+        assertNull(searcher.searchOrderById("O999", pedidos));
+    }
+
+    @Test
+    @DisplayName("searchOrderById: lista vacía o id null devuelven null")
+    void testSearchOrderById_emptyOrNull() {
+        assertNull(searcher.searchOrderById("O001", new ArrayList<>()));
+        assertNull(searcher.searchOrderById(null, new ArrayList<>()));
     }
 }

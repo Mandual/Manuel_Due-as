@@ -1,4 +1,4 @@
-package com;
+package com.example.uem.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -6,14 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-
     private String id;
     @SerializedName("articles")
     private List<Article> articulos;
 
     private final Calculator calculator = new Calculator();
 
-    // Constructor vacío
+    // Constructor vacío necesario para que Gson cree el objeto
     public Order() {
         this.articulos = new ArrayList<>();
     }

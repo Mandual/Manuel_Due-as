@@ -1,10 +1,9 @@
-package com;
+package com.example.uem.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Searcher {
-
     public boolean searchExactPhrase(String phrase, List<String> list) {
         for (String item : list) {
             if (item.equals(phrase)) {
@@ -43,5 +42,18 @@ public class Searcher {
             }
         }
         return results;
+    }
+
+    // Busca un pedido por su id en la lista de pedidos; devuelve null si no existe
+    public Order searchOrderById(String id, List<Order> orders) {
+        if (id == null) {
+            return null;
+        }
+        for (Order order : orders) {
+            if (id.equals(order.getId())) {
+                return order;
+            }
+        }
+        return null;
     }
 }
