@@ -43,7 +43,7 @@ public class Main {
             for (Order order : orders) {
                 log.debug("Loaded order: {}", order.getId());
             }
-            log.debug("Total orders loaded: {}", orders.size());
+            log.debug("Total de pedidos cargados: {}", orders.size());
 
             OrderView view = new OrderView();
             new OrderController(view, orders);
